@@ -11,7 +11,7 @@ angular.module("sportsStore")
 		selectedCategory = newCategory;
 		$scope.selectedPage = 1;
 	}
-	$scope.selectedPage = function(newPage){
+	$scope.selectPage = function(newPage){
 		$scope.selectedPage = newPage;
 	}
 	
