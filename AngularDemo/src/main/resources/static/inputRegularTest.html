@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/bootstrap-theme.css" rel="stylesheet" />
+	<script src="angular.js"></script>
+<body ng-controller="testCtrl">
+	<div class="form-group"
+		ng-class="{'has-error':myForm.postFix.$valid}">
+		<label for="postFix" class="col-sm-2 control-label">postfix</label>
+		<div class="col-sm-6">
+			<form name="myForm">
+				<input type="text" id="postFix" name="postFix" ng-pattern="notKoreanPattern" title="영문과 숫자만 입력해주세요."
+					ng-model="application.postFix"
+					class="form-control"
+					required="required" />
+				<div class="alert alert-danger"
+					ng-hide="myForm.postFix.$valid">postfix를 확인해주세요.</div>
+			</form>
+		</div>
+	</div>
+<script>
+angular.module("test",[])
+.controller("testCtrl", function($scope){
+		$scope.notKoreanPattern = '*[A-Za-z0-9_]*';
+});
+</script>
+</body>
+</html>

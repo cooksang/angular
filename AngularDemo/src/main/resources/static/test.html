@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head>
+	<title>TO DO List</title>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/bootstrap-theme.css" rel="stylesheet" />
+	<script src="angular.js"></script>
+<body ng-controller="testCtrl">
+	<table class="table table-bordered table-hover" >
+		<thead>
+			<tr class="info">
+				<th>id</th>
+				<th>타입</th>
+				<th>to</th>
+				<th>요청시간</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="notification in notifications | orderBy: 'notificationId'">
+				<td>{{ notification.notificationId }}</td>
+				<td>{{ notification.notificationType }}</td>
+				<td>{{ notification.to }}</td>
+				<td>{{ notification.created | date:"yy.MM.dd hh:mm "}}</td>
+			</tr>
+		</tbody>
+	</table>
+<script>
+angular.module("test",[])
+.controller("testCtrl", function($scope){
+		$scope.notifications = [{
+									notificationId:"4",
+									notificationType:"ONGOING",
+									to:"aa@bb.cc",
+									created:"20160000"
+								},
+								{
+									notificationId:"3",
+									notificationType:"R",
+									to:"aa@bb.cc",
+									created:"20160421163000"
+								},
+								{
+									notificationId:"2",
+									notificationType:"ONGOING",
+									to:"aa@bb.cc",
+									created:"20160421163000"
+								},
+								{
+									notificationId:"1",
+									notificationType:"ONGOING",
+									to:"aa@bb.cc",
+									created:"20160421163000"
+								}];
+		$scope.notification = {to:"cc@dd.ee",companyId:"3"};
+		$scope.notifications.error = null;
+});
+</script>
+</body>
+</html>
